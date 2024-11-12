@@ -1,0 +1,52 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex align-items-center justify-content-center">
+  <c-container breakpoint="md">
+    <c-row class="justify-content-center">
+      <c-col lg="10" xl="4">
+        <c-card class="p-4">
+          <c-card-body>
+            <div *ngIf="message">{{ message }}</div>
+
+            <form (ngSubmit)="login()">
+              <h1>Login</h1>
+              <p class="text-body-secondary">Sign In to your account</p>
+
+              <c-input-group class="mb-3">
+                <span cInputGroupText><svg cIcon name="cilUser"></svg></span>
+                <input 
+                  type="text" 
+                  [(ngModel)]="correo" 
+                  name="correo" 
+                  autocomplete="username" 
+                  cFormControl 
+                  placeholder="Username" 
+                  required />
+              </c-input-group>
+
+              <c-input-group class="mb-4">
+                <span cInputGroupText><svg cIcon name="cilLockLocked"></svg></span>
+                <input 
+                  type="password" 
+                  [(ngModel)]="contrasena" 
+                  name="contrasena" 
+                  autocomplete="current-password" 
+                  cFormControl 
+                  placeholder="Password" 
+                  required />
+              </c-input-group>
+
+              <div class="text-center">
+                <button type="submit" cButton class="px-4" color="primary">Login</button>
+                <div class="mt-2">
+                  <button cButton class="px-0" color="link">Forgot password?</button>
+                </div>
+                <div class="mt-1">
+                  <button cButton class="px-0" color="link">Sign up</button>
+                </div>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

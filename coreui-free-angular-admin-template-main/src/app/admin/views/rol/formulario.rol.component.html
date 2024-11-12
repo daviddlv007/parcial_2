@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>{{ isUpdate ? 'Actualizar Rol' : 'Registrar Rol' }}</h2>
+  <form [formGroup]="roleForm" (ngSubmit)="saveRole()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" type="text" class="form-control" placeholder="Nombre" />
+      <div *ngIf="isFieldInvalid('nombre')" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" formControlName="descripcion" type="text" class="form-control" placeholder="Descripción" />
+      <div *ngIf="isFieldInvalid('descripcion')" class="text-danger">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="interfazRolId">Interfaz de Rol</label>
+      <select id="interfazRolId" formControlName="interfazRolId" class="form-control">
+        <option *ngFor="let interfaz of interfaces" [value]="interfaz.id">{{ interfaz.nombre }}</option>
+      </select>
+      <div *ngIf="isFieldInvalid('interfazRolId')" class="text-danger">
+        La interfaz es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group d-flex justify-content-end mt-3">
+      <button type="submit" class="btn btn-primary ms-2">{{ isUpdate ? 'Actualizar' : 'Registrar' }}</button>
+      <button type="button" class="btn btn-danger text-white ms-2" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

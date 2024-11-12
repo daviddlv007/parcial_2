@@ -1,0 +1,41 @@
+<c-row>
+  <c-col xs="12">
+    <h1 class="mb-3">Roles</h1>
+    <div class="d-flex justify-content-between mb-3">
+      <input 
+        type="text" 
+        class="form-control w-25" 
+        placeholder="Aplicar filtros" 
+        [(ngModel)]="filterText" 
+        (ngModelChange)="applyFilter()" />
+
+      <button class="btn btn-primary" (click)="goToRegisterPage()">Registrar</button>
+    </div>
+
+    <c-card class="mb-4">
+      <c-card-body>
+        <table cTable [hover]="true" [responsive]="true" [striped]="true" align="middle" class="mb-0 border">
+          <thead class="text-nowrap text-truncate">
+            <tr>
+              <th class="bg-body-tertiary">Nombre</th>
+              <th class="bg-body-tertiary">Descripción</th>
+              <th class="bg-body-tertiary">Interfaz</th>
+              <th class="bg-body-tertiary">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let role of filteredRoles">
+              <td>{{ role.nombre }}</td>
+              <td>{{ role.descripcion }}</td>
+              <td>{{ role.interfazNombre }}</td>
+              <td>
+                <button class="btn btn-success me-2" (click)="goToUpdateForm(role.id)">🔄</button>
+                <button class="btn btn-danger" (click)="confirmDelete(role.id)">🗑️</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
